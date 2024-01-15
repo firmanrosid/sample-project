@@ -1,0 +1,15 @@
+{
+  "editor.quickSuggestions": {
+    "comments": "on",
+    "strings": "on",
+    "other": "on"
+  },
+  "cucumber.features": ["src/features/*.feature"],
+  "cucumber.glue": ["src/steps/*.ts"],
+  "window.zoomLevel": 0,
+  "cucumberautocomplete.steps": ["src/steps/*.ts"],
+  "cucumberautocomplete.syncfeatures": "src/features/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.stepsInvariants": true
+}
