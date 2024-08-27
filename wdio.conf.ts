@@ -1,16 +1,10 @@
 import { AppiumServerArguments } from "@wdio/appium-service";
-import type { Capabilities, Options } from "@wdio/types";
+import type { Capabilities } from "@wdio/types";
 import { join } from "path";
 
-export const config: Options.Testrunner = {
+export const config: WebdriverIO.Config = {
   runner: "local",
-  autoCompileOpts: {
-    autoCompile: true,
-    tsNodeOpts: {
-      transpileOnly: true,
-      project: "./tsconfig.json",
-    },
-  },
+  tsConfigPath: "./tsconfig.json",
 
   maxInstances: 2,
   specs: [
@@ -30,38 +24,31 @@ export const config: Options.Testrunner = {
       "appium:automationName": "XCUITest",
       "appium:bundleId": "com.apple.mobilesafari",
       "appium:autoAcceptAlerts": true,
-      "appium:usePrebuiltWDA": true,
-      "appium:screenshotQuality": 2,
       "appium:autoLaunch": false,
       "appium:deviceName": "iPhone 15 Pro",
-      "appium:platformVersion": "17.2",
-      "appium:xcodeConfigFile": ".xcconfig",
-      "appium:noReset": true,
+      "appium:platformVersion": "17.5",
+      "appium:noReset": false,
       "appium:fullReset": false,
       "appium:newCommandTimeout": 120,
-      "appium:locale": "id_ID",
       "appium:iPhoneOnly": true,
-      "appium:udids": "FD156DDB-7C0B-43FF-989A-00EDDC072DA0,2FC39954-3BAC-45A8-8B10-2BE8718DC1F5",
-      "appium:minSDK": 17,
     } as Capabilities.AppiumXCUITestCapabilities,
   ],
 
   logLevel: "error",
   bail: 0,
   waitforTimeout: 15000,
-  connectionRetryTimeout: 90000,
-  connectionRetryCount: 1,
+  connectionRetryTimeout: 120000,
+  connectionRetryCount: 2,
   services: [
     [
       "appium",
       {
-        logPath: "./",
+        logPath: "./logs/wdio-appium.log",
         command: "appium",
         args: {
-          address: "127.0.0.1",
-          port: 4723,
-          usePlugins: "device-farm,appium-dashboard",
-          allowCors: true,
+          address: "0.0.0.0",
+          port: 4724,
+          basePath: "/wd/hub",
         } as AppiumServerArguments,
       },
     ],

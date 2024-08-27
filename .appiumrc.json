@@ -1,0 +1,32 @@
+{
+  "server": {
+    "address": "0.0.0.0",
+    "port": 4724,
+    "allow-cors": true,
+    "debug-log-spacing": true,
+    "keep-alive-timeout": 800,
+    "local-timezone": true,
+    "log-no-colors": false,
+    "plugin": {
+      "device-farm": {
+        "platform": "ios",
+        "androidDeviceType": "none",
+        "iosDeviceType": "none",
+        "skipChromeDownload": true,
+        "maxSessions": 4,
+        "deviceAvailabilityTimeoutMs": 300000,
+        "deviceAvailabilityQueryIntervalMs": 10000,
+        "sendNodeDevicesToHubIntervalMs": 10000,
+        "checkStaleDevicesIntervalMs": 30000,
+        "checkBlockedDevicesIntervalMs": 30000,
+        "newCommandTimeoutSec": 240,
+        "liveStreaming": true,
+        "enableDashboard": true
+      }
+    },
+    "relaxed-security": true,
+    "session-override": false,
+    "use-drivers": ["xcuitest"],
+    "use-plugins": ["device-farm"]
+  }
+}
